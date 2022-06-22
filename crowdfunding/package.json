@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "mocha"
+    "test": "mocha --timeout 5000"
   },
   "author": "",
   "license": "ISC",
@@ -13,6 +13,9 @@
     "fs-extra": "^10.1.0",
     "ganache-cli": "^6.12.2",
     "mocha": "^10.0.0",
+    "next": "^12.1.6",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
     "solc": "^0.4.17",
     "web": "^0.0.2",
     "web3": "^1.7.3"

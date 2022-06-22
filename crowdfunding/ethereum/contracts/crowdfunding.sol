@@ -30,7 +30,7 @@ contract Crowdfunding {
 
     address public manager;
     uint public minimumAmount;
-    mapping (address => bool) contributors;
+    mapping (address => bool) public contributors;
     uint public contributorCount;
     Request[] public requests;
 
