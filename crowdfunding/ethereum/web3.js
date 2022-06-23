@@ -1,19 +1,17 @@
-import Web3 from 'web3';
+import Web3 from "web3";
 
+let web3;
 
-const funct = async () =>{
-let provider;
-if(typeof window !== undefined && typeof window.ethereum !== undefined){ //browser has both ethereum and metamask and code is being rendered on the browser
-    provider - await window.ethereum.requests({method:"eth_requestAccounts"});
+if (typeof window !== "undefined" && typeof window.ethereum !== "undefined") {
+  // We are in the browser and metamask is running.
+  window.ethereum.request({ method: "eth_requestAccounts" });
+  web3 = new Web3(window.ethereum);
+} else {
+  // We are on the server *OR* the user is not running metamask
+  const provider = new Web3.providers.HttpProvider(
+   "https://rinkeby.infura.io/v3/4bf2abe843a049e5b784627c536d31b7"
+  );
+  web3 = new Web3(provider);
 }
-
-else{
-    provider = await Web3.provider.HttpProvider("https://rinkeby.infura.io/v3/4bf2abe843a049e5b784627c536d31b7");
-}
-console.log(provider);
-return provider;
-}
-
-const web3 = new Web3(funct());
 
 export default web3;
