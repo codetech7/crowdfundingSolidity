@@ -4,6 +4,7 @@ import React, {Component} from 'react';
 import Layout from '../../component/Layout';
 import factory from '../../ethereum/factory';
 import web3 from '../../ethereum/web3';
+import {Router} from "../../routes";
 
 class SignUp extends Component{
     state = {
@@ -23,6 +24,7 @@ class SignUp extends Component{
             await factory.methods
             .createCampaign(this.state.minimumContribution)
             .send({from:accounts[0]});
+            Router.pushRoute("/");
         } catch (error) {
             this.setState({errorMessage: error.message});
         }

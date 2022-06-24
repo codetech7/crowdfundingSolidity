@@ -3,6 +3,8 @@ import factory from "../ethereum/factory";
 import {Card, Button} from "semantic-ui-react";
 import "semantic-ui-css/semantic.min.css";
 import Layout from '../component/Layout';
+import {Link} from "../routes";
+
 
 
 class CampaignIndex extends Component {
@@ -13,10 +15,10 @@ class CampaignIndex extends Component {
   }
 
   renderCampaign(){
-    const list = this.props.campaigns.map(item=>{
+    const list = this.props.campaigns.map( item =>{
        return {
             header: item,
-            description: <a href = "https://www.google.com" target = "blank">This is an item in our list</a>,
+            description: <Link route = {`/campaigns/${item}`}><a target = "blank">This is an item in our list</a></Link>,
             fluid: true
         }
     }
