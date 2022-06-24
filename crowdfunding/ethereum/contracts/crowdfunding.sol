@@ -100,8 +100,22 @@ contract Crowdfunding {
 
     }
 
-    function totalFund() public view returns(uint){
-        return this.balance;
+
+
+    function campaignSummary() public view returns(address, uint, uint, uint, uint, uint){
+        return(
+            manager,
+            minimumAmount,
+            contributorCount,
+            this.balance,
+            block.timestamp,
+            requests.length
+        );
     }
+
+    function getRequestCounts() public view returns(uint){
+        return requests.length;
+    }
+
 
 }
