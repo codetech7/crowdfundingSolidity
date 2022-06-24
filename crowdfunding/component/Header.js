@@ -4,7 +4,7 @@ import {Menu} from 'semantic-ui-react';
 
 const Header = ()=>(
 
-<Menu>
+<Menu style = {{margin:"10px"}}>
     <Menu.Item>AfriCharity</Menu.Item>
 
     <Menu.Menu position="right"> 

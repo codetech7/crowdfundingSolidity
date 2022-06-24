@@ -33,8 +33,11 @@ class CampaignIndex extends Component {
     return (
       <div>
         <Layout>
-      {this.renderCampaign()}
-      <Button content ="Please Click Me" color = "green" icon = "circle add"/>
+        <h3 style = {{floated:"left"}}>Charity Projects</h3>
+        {/* <Button floated="right" content ="Please Click Me" color = "green" icon = "circle add"/> */}
+        <Button floated="right" content ="Please Click Me" color = "green" icon = "circle add"/>
+        {this.renderCampaign()}
+     
         </Layout>
       </div>
     );
