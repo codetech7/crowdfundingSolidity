@@ -1,3 +1,8 @@
-const routes = module.exports = require('next-routes')();
+const routes = require('next-routes')();
 
-routes.add("/components/:slug", "show.js")
+routes
+
+.add("/campaigns/new-charity-project","/campaigns/new-charity-project")
+.add("/campaigns/:address", "/campaigns/show");
+
+module.exports = routes;

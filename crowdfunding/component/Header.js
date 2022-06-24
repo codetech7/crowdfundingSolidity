@@ -22,7 +22,7 @@ const Header = ()=>(
             </Link>
          </Menu.Item>
         <Menu.Item>
-            <Link route = "/component/new-charity-project">
+            <Link route = "/campaigns/new-charity-project">
                 <a>
                     +
                 </a>

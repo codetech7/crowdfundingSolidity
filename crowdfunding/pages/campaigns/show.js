@@ -1,5 +1,12 @@
-import React from 'react';
+import React, {Component} from 'react';
 
-export default () =>(
-    <h1>This is the new campaign showable page</h1>
-);
+class Show extends Component {
+    render(){
+        return(
+            
+            <h1>Campaign Show</h1>
+            
+        )
+    }
+  }
+export default Show;
