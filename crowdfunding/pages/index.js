@@ -1,6 +1,9 @@
 import React, { Component } from "react";
 import factory from "../ethereum/factory";
 import {Card, Button} from "semantic-ui-react";
+import "semantic-ui-css/semantic.min.css";
+import Layout from '../component/Layout';
+
 
 class CampaignIndex extends Component {
   static async getInitialProps() {
@@ -27,7 +30,14 @@ class CampaignIndex extends Component {
         rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css" 
         />
-    return <div>{this.renderCampaign()}</div>;
+    return (
+      <div>
+        <Layout>
+      {this.renderCampaign()}
+      <Button content ="Please Click Me" color = "green" icon = "circle add"/>
+        </Layout>
+      </div>
+    );
   }
 }
 
