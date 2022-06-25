@@ -16,7 +16,7 @@ class ContributeForm extends Component{
     }
 
     onChangeHandler = (event) =>{
-        value = this.state.value;
+       
         this.setState({value : event.target.value});
 
     }
@@ -39,9 +39,12 @@ class ContributeForm extends Component{
     render(){
         return (
             <Form onSubmit={this.onSubmitHandler} error = {!!this.state.error}>
-                <Input label = "ether" labelPosition='right' floated='right' type = 'number' onChange = {this.onChangeHandler} />
-                <Button content = "Donate" primary loading = {this.state.loading} floating = "right"/>
+                
+                <Input label = "ether" labelPosition='right' floated='right' type = 'number'  value = {this.state.value} onChange = {this.onChangeHandler} />
+                <Button content = "Donate" primary loading = {this.state.loading} floating= "right"/>
+                
                 <Message content = {this.state.error} error/>
+                
             </Form>
         );
     }

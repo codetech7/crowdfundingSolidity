@@ -1,10 +1,11 @@
 import React, {Component} from 'react';
-import { Card, Form } from 'semantic-ui-react';
+import { Card, Grid} from 'semantic-ui-react';
 import campaign from '../../ethereum/campaign';
 // import {Card} from "semantic-ui-react";
 import Layout from '../../component/Layout';
 import web3 from '../../ethereum/web3';
 import ContributeForm from '../../component/contributeForm';
+
 
 class Show extends Component {
    static async getInitialProps(props){
@@ -85,11 +86,18 @@ class Show extends Component {
         return(
             
             <Layout>
-                <div>
-                    {this.renderCampaign()}
-                    <ContributeForm address={this.props.address} />
+                    <Grid>
+                        <Grid.Column width = {12}>
+                             {this.renderCampaign()}
+                        </Grid.Column>
 
-                </div>
+                        <Grid.Column width = {4}>
+                            <ContributeForm address={this.props.address} />
+                        </Grid.Column>
+                        
+                        
+                    </Grid>
+                
             </Layout>
             
         )
