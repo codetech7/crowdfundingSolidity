@@ -1,9 +1,10 @@
 import React, {Component} from 'react';
-import { Card } from 'semantic-ui-react';
+import { Card, Form } from 'semantic-ui-react';
 import campaign from '../../ethereum/campaign';
 // import {Card} from "semantic-ui-react";
 import Layout from '../../component/Layout';
 import web3 from '../../ethereum/web3';
+import ContributeForm from '../../component/contributeForm';
 
 class Show extends Component {
    static async getInitialProps(props){
@@ -12,6 +13,7 @@ class Show extends Component {
         const answer = await instance.methods.campaignSummary().call();
         console.log(answer);
         return {
+            address: props.query.address,
             manager:answer[0],
             minimumAmount: answer[1],
             contributorCount: answer[2],
@@ -70,12 +72,23 @@ class Show extends Component {
         return (<Card.Group items ={items} />);
     }
 
+    // renderRequestForm(){
+    //     <Form>
+    //         <Form.Field>
+    //             <
+    //             <Input></Input>
+    //         </Form.Field>
+    //     </Form>
+    // }
+
     render(){
         return(
             
             <Layout>
                 <div>
                     {this.renderCampaign()}
+                    <ContributeForm address={this.props.address} />
+
                 </div>
             </Layout>
             
