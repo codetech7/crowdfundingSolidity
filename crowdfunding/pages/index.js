@@ -27,11 +27,11 @@ class CampaignIndex extends Component {
     return <Card.Group items={list}/>
     }
   render() {
-    <link 
-        async
-        rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css" 
-        />
+    // <link 
+    //     async
+    //     rel="stylesheet"
+    //     href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css" 
+    //     />
     return (
       <div>
         <Layout>
