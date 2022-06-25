@@ -22,8 +22,11 @@ class Show extends Component {
     }
 
     renderCampaign(){
+        
         const {manager, minimumAmount, contributorCount, balance, timeCreated, numberOfRequests} = this.props;
-
+        const timing = timeCreated;
+        const date = new Date(timing * 1000);
+        const dateToReturn = `${date.getDate()}/${date.getMonth()+1}/${date.getFullYear()} ${date.getHours()}:${date.getMinutes()}:${date.getSeconds()} UTC`
         const items = [
             
             {
@@ -51,7 +54,7 @@ class Show extends Component {
                 style: {overflowWrap: 'break-word'}
             },
             {
-                header: timeCreated,
+                header: dateToReturn,
                 meta: "Time created",
                 description: "This is the time that the charity project was created",
                 style: {overflowWrap: 'break-word'}
