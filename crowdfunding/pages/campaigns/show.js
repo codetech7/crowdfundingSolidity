@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { Card, Grid} from 'semantic-ui-react';
+import { Button, Card, Grid} from 'semantic-ui-react';
 import campaign from '../../ethereum/campaign';
 // import {Card} from "semantic-ui-react";
 import Layout from '../../component/Layout';
@@ -87,14 +87,23 @@ class Show extends Component {
             
             <Layout>
                     <Grid>
-                        <Grid.Column width = {12}>
-                             {this.renderCampaign()}
-                        </Grid.Column>
+                        <Grid.Row>
+                            <Grid.Column width = {12}>
+                                {this.renderCampaign()}
+                            </Grid.Column>
 
-                        <Grid.Column width = {4}>
-                            <ContributeForm address={this.props.address} />
-                        </Grid.Column>
-                        
+                            <Grid.Column width = {4}>
+                                <ContributeForm address={this.props.address} />
+                            </Grid.Column>
+                        </Grid.Row>
+
+                        <Grid.Row>
+                            <Grid.Column>
+                                <Link route = {`/campaigns/${this.props.address}/requests`}>
+                                    <a><Button >See Requests</Button></a>
+                                </Link>
+                            </Grid.Column>
+                        </Grid.Row>
                         
                     </Grid>
                 
