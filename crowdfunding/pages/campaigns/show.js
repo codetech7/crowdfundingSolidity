@@ -5,6 +5,7 @@ import campaign from '../../ethereum/campaign';
 import Layout from '../../component/Layout';
 import web3 from '../../ethereum/web3';
 import ContributeForm from '../../component/contributeForm';
+import {Link} from '../../routes';
 
 
 class Show extends Component {
