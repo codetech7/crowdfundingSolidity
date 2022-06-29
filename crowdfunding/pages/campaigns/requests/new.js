@@ -1,8 +1,9 @@
 import React, {Component} from 'react';
-import {Form, Input, Message, Button} from 'semantic-ui-react'
+import {Form, Input, Message, Button} from 'semantic-ui-react';
 import Campaign from '../../../ethereum/campaign';
-import web3 from '../../../ethereum/web3'
+import web3 from '../../../ethereum/web3';
 import Layout from '../../../component/Layout';
+import {Router} from '../../../routes';
 
 
 class CreateRequest extends Component{
@@ -26,19 +27,23 @@ class CreateRequest extends Component{
 
         this.setState({loading:true, errorMessage: ''});
         try{
-        const instance = Campaign(this.props.address);
+        const instance = await Campaign(this.props.address);
+        console.log(this.props.address);
         const accounts = await web3.eth.getAccounts();
-        await instance.methods.createRequest(this.state.description, this.state.vendor, web3.utils.toWei(this.state.amount, 'ether')).send({from: accounts[0]}); //convert ether to wei before function call
+        await instance.methods.createRequest(this.state.description, this.state.recipient, web3.utils.toWei(this.state.amount, 'ether')).send({from: accounts[0]}); //convert ether to wei before function call
+        Router.pushRoute(`/campaigns/${this.props.address}/requests/`);
     }catch(error){
         this.setState({errorMessage: error.message});
     }
 
         this.setState({loading:false});
+        //  Router.pushRoute(`/campaigns/${this.props.address}/requests/`);
     }
 
     render(){
         return (
             <Layout>
+                <h3>Create a Request</h3>
                 <Form onSubmit={this.submitHandler} error={!!this.state.errorMessage} >
                     <Form.Field >
                         <label>Description</label>
@@ -46,8 +51,8 @@ class CreateRequest extends Component{
                     </Form.Field>
 
                     <Form.Field>
-                        <label>Recipeint</label>
-                        <Input placeholder="Who are you sending the funds to?"  onChange = {(event)=>{this.setState({recipient:event.target.value})}} value = {this.state.recipient}/>
+                        <label>Recipient</label>
+                        <Input placeholder="Who are you sending the funds to?"  onChange = {(event)=>{this.setState({recipient: event.target.value})}} value = {this.state.recipient}/>
                     </Form.Field>
 
                     <Form.Field>

@@ -10,7 +10,7 @@ import {Link} from '../../routes';
 
 class Show extends Component {
    static async getInitialProps(props){
-        // console.log(props.query.address);
+        console.log(props);
         const instance = campaign(props.query.address);
         const answer = await instance.methods.campaignSummary().call();
         console.log(answer);
