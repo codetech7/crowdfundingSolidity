@@ -4,6 +4,7 @@ import {Card, Button} from "semantic-ui-react";
 import "semantic-ui-css/semantic.min.css";
 import Layout from '../component/Layout';
 import {Link} from "../routes";
+import Campaign from '../ethereum/campaign';
 
 
 
@@ -14,15 +15,20 @@ class CampaignIndex extends Component {
     return { campaigns };
   }
 
-  renderCampaign(){
-    const list = this.props.campaigns.map( item =>{
+  renderCampaign = ()=>{
+    // const list = await Promise.all(
+      const list = this.props.campaigns.map( async (item) =>{
+    
        return {
             header: item,
-            description: <Link route = {`/campaigns/${item}`}><a target = "blank">This is an item in our list</a></Link>,
+            description: <Link route = {`/campaigns/${item}`}><a target = "blank">This is an item in our list minimumAmount</a></Link>,
             fluid: true
         }
     }
+    
     );
+
+   
 
     return <Card.Group items={list}/>
     }
@@ -37,7 +43,7 @@ class CampaignIndex extends Component {
         <Layout>
         <h3 style = {{floated:"left"}}>Charity Projects</h3>
         {/* <Button floated="right" content ="Please Click Me" color = "green" icon = "circle add"/> */}
-        <Button floated="right" content ="Please Click Me" color = "green" icon = "circle add"/>
+        <Button floated="right" content ="Create A Campaign" color = "green" icon = "circle add"/>
         {this.renderCampaign()}
      
         </Layout>
