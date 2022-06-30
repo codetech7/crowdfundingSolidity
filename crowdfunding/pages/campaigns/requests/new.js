@@ -57,7 +57,7 @@ class CreateRequest extends Component{
 
                     <Form.Field>
                         <label>Amount in ether</label>
-                        <Input placeholder={`How much is required? Max is `}  onChange = {(event)=>{this.setState({amount:event.target.value})}} value = {this.state.amount}/>
+                        <Input type= "number" placeholder={`How much is required? Max is `}  onChange = {(event)=>{this.setState({amount:event.target.value})}} value = {this.state.amount}/>
                         
                     </Form.Field>
 

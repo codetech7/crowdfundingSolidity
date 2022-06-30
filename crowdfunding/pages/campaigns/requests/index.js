@@ -44,7 +44,7 @@ class ShowRequest extends Component{
 
                 <h3>Requests</h3>
                 
-                <Link route = {`/campaigns/${this.props.address}/requests/new`}><a><Button content = "Create a request" primary icon="add"/></a></Link> 
+                <Link route = {`/campaigns/${this.props.address}/requests/new`}><a><Button floated='right' style = {{marginBottom: "10px"}} content = "Create a request" primary icon="add"/></a></Link> 
 
                 <Table>
                     <TableHeader>
