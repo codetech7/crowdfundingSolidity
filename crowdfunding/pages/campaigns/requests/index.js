@@ -3,20 +3,37 @@ import {Button, Table, TableBody, TableHeader, TableHeaderCell, TableRow} from '
 import {Link} from '../../../routes';
 import  Layout  from "../../../component/Layout";
 import RequestRow from '../../../component/RequestRow';
+import Campaign from '../../../ethereum/campaign';
 
 
 class ShowRequest extends Component{
 
     static async getInitialProps(props){
         const {address} = props.query;
-        // console.log(props);
-
-        // console.log(address);
-        return {address};
+        const campaign = await Campaign(address);
+        const requestCount = await campaign.methods.getRequestCounts().call();
+        const contributorCount = await campaign.methods.contributorCount().call();
+        console.log(contributorCount);
+        const requests = await Promise.all(
+            Array(parseInt(requestCount)).fill().map((element, index)=>{
+                return campaign.methods.requests(index).call();
+            })
+        );
+        
+        return {address, requests, contributorCount};
     }
 
-    renderRow(){
+    renderRow(){  //an helper function to return return row wth some props
         
+        //create a variable that contains requestRow components for each element that is present in the requests array
+       const requestRows = this.props.requests.map((element, index)=>{
+            return (
+                <RequestRow request = {element} key= {index} id={index} contributorCount = {this.props.contributorCount}/>
+                )
+        })
+
+        return requestRows;
+       
     }
 
     render(){
@@ -39,10 +56,13 @@ class ShowRequest extends Component{
                                 Description
                             </TableHeaderCell>
                             <TableHeaderCell>
-                                Amount
+                                Amount(Ether)
                             </TableHeaderCell>
                             <TableHeaderCell>
                                 Recipient
+                            </TableHeaderCell>
+                            <TableHeaderCell>
+                                Approvals
                             </TableHeaderCell>
                             <TableHeaderCell>
                                 Approve(Contributors Only)
@@ -55,7 +75,7 @@ class ShowRequest extends Component{
                     </TableHeader>
 
                     <TableBody>
-                        <TableRow><RequestRow/></TableRow>
+                        {this.renderRow()}
                     </TableBody>
                 </Table>
             </Layout>
