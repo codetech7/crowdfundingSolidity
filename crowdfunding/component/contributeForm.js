@@ -45,7 +45,7 @@ class ContributeForm extends Component{
             <Form onSubmit={this.onSubmitHandler} error = {!!this.state.error}> 
                 
                 <Input label = "ether" labelPosition='right' floated='right' type = 'number'  value = {this.state.value} onChange = {this.onChangeHandler} />
-                <Button content = "Donate" primary loading = {this.state.loading} floating= "right"/>
+                <Button content = "Donate" style={{marginTop: "10px"}} primary loading = {this.state.loading} floated= "left"/>
                 
                 <Message content = {this.state.error} error/>
                 

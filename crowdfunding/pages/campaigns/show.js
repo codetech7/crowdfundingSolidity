@@ -101,7 +101,7 @@ class Show extends Component {
                         <Grid.Row>
                             <Grid.Column>
                                 <Link route = {`/campaigns/${this.props.address}/requests`}>
-                                    <a><Button >See Requests</Button></a>
+                                    <a><Button primary >See Requests</Button></a>
                                 </Link>
                             </Grid.Column>
                         </Grid.Row>

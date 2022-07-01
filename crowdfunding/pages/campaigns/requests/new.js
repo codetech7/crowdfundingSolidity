@@ -18,8 +18,12 @@ class CreateRequest extends Component{
 
     static async getInitialProps(props){
         const {address} = props.query;
+        const instance = Campaign(address);
+        const summary = await instance.methods.campaignSummary().call();
 
-        return {address};
+        // console.log(address);
+        // console.log(summary);
+        return {address, summary};
     }
 
     submitHandler = async (event)=>{
@@ -57,7 +61,7 @@ class CreateRequest extends Component{
 
                     <Form.Field>
                         <label>Amount in ether</label>
-                        <Input type= "number" placeholder={`How much is required? Max is `}  onChange = {(event)=>{this.setState({amount:event.target.value})}} value = {this.state.amount}/>
+                        <Input type= "number" placeholder={`How much is required? Max is ${web3.utils.fromWei(this.props.summary[3], 'ether')} ether `}  onChange = {(event)=>{this.setState({amount:event.target.value})}} value = {this.state.amount}/>
                         
                     </Form.Field>
 
