@@ -29,7 +29,7 @@ class ContributeForm extends Component{
         const accounts = await web3.eth.getAccounts();
         try {
         
-        instance = campaign(this.props.address);
+        const instance = campaign(this.props.address);
         await instance.methods.contribute().send({from:accounts[0], value: (web3.utils.toWei(this.state.value, "ether"))});
         this.setState({error:"Success"});
 
