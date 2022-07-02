@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import factory from "../ethereum/factory";
 import {Card, Button} from "semantic-ui-react";
-import "semantic-ui-css/semantic.min.css";
 import Layout from '../component/Layout';
 import {Link} from "../routes";
 import Campaign from '../ethereum/campaign';
