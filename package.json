@@ -29,5 +29,8 @@
   },
   "cacheDirectories":[
     ".next/cache"
-  ]
+  ],
+  "optionalDependencies": {
+    "fsevents": "*"
+    }
 }
