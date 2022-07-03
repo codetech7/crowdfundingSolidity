@@ -40,8 +40,8 @@ class Show extends Component {
                 style: {overflowWrap: 'break-word'}
             },
             {
-                header: minimumAmount,
-                meta: "Least Amount",
+                header: web3.utils.fromWei(minimumAmount, 'ether'),
+                meta: "Least Amount Contributable(Ether)",
                 description: "This is the minimum amount that can be contributed to this campaign",
                 style: {overflowWrap: 'break-word'}
             },
@@ -53,7 +53,7 @@ class Show extends Component {
             },
             {
                 header: web3.utils.fromWei(balance, "ether"),
-                meta: "Campaign balance",
+                meta: "Campaign balance(ether)",
                 description: "This is the amount of money left to be used for various charity projects in this charity campaign",
                 style: {overflowWrap: 'break-word'}
             },

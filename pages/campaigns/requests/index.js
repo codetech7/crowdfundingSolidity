@@ -28,7 +28,7 @@ class ShowRequest extends Component{
         //create a variable that contains requestRow components for each element that is present in the requests array
        const requestRows = this.props.requests.map((element, index)=>{
             return (
-                <RequestRow request = {element} key= {index} id={index} contributorCount = {this.props.contributorCount}/>
+                <RequestRow request = {element} key= {index} id={index} contributorCount = {this.props.contributorCount} address = {this.props.address}/>
                 )
         })
 

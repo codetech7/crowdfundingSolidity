@@ -43,7 +43,7 @@ class SignUp extends Component{
                 label = "wei"
                 labelPosition='right'
                 value = {this.state.minimumContribution}
-                placeholder = "How much do you want to contribute to this campaign?"
+                placeholder = "What is the least contribution you want to accept on this campaign?"
                 type = 'number'
                 onChange={(event)=>{
                     this.setState({minimumContribution: event.target.value});

@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {TableCell, TableRow, Button} from 'semantic-ui-react';
 import web3 from '../ethereum/web3';
 import Campaign from '../ethereum/campaign'
+import { Router } from 'next/router';
 
 class RequestRow extends Component{
     // static async getInitialProps(props){
@@ -10,7 +11,30 @@ class RequestRow extends Component{
 
     //     console.log(contributorCount);
     //     return { contributorCount};
+
     // }
+
+    ApproveHandler = async () => {
+        try {
+            const accounts = await web3.eth.getAccounts();
+            const campaign = Campaign(this.props.address);
+           await campaign.methods.voteRequest(this.props.id).send({from:accounts[0]});
+            
+        } catch (error) {
+            console.log(error);
+        }
+   
+    }
+
+    FinalizeHandler = async ()=>{
+        try {
+            const accounts = await web3.eth.getAccounts();
+            const campaign = Campaign(this.props.address);
+           await campaign.methods.finalizeRequest(this.props.id).send({from:accounts[0]});
+        } catch (error) {
+            console.log(error);
+        }
+    }
 
     render(){
         const {id, request, contributorCount} = this.props;
@@ -23,8 +47,8 @@ class RequestRow extends Component{
                 <TableCell>{web3.utils.fromWei(request.amount,"ether")}</TableCell>
                 <TableCell>{request.vendor}</TableCell>
                 <TableCell>{request.voterCount}/{contributorCount}</TableCell>
-                <TableCell><Button content = 'Approve' color = 'green' basic/></TableCell>
-                <TableCell><Button color = 'teal' content = 'Finalize' basic/></TableCell>
+                <TableCell><Button onClick={this.ApproveHandler} content = 'Approve' color = 'green' basic/></TableCell>
+                <TableCell><Button onClick={this.FinalizeHandler} color = 'teal' content = 'Finalize' basic/></TableCell>
 
             </TableRow> 
             )
